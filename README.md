@@ -1,2 +1,2 @@
-# heming6666.github.io
-My blog.
+# Heming's blog
+My personal blog: https://heming6666.github.io/
