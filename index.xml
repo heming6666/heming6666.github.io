@@ -1,41 +1,108 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Introduction on Hugo Book</title><link>https://example.com/</link><description>Recent content in Introduction on Hugo Book</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux 进程调度</title><link>https://example.com/docs/example/table-of-contents/with-toc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/example/table-of-contents/with-toc/</guid><description>Linux 进程调度 前言 在计算机科学中，调度就是一种将任务（Work）分配给资源的方法。任务可能是虚拟的计算任务，例如线程、进程或者数据流，这些任务会被调度到硬件资源上执行，例如：处理器 CPU 等设备。调度器或调度算法的设计与实现最终都会归结到一个问题上，即如何对有限的资源进行分配以实现资源利用率的最大化并满足特定的需求。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on 林氏伉俪写字的地方</title>
+    <link>http://example.org/</link>
+    <description>Recent content in Introduction on 林氏伉俪写字的地方</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 进程调度</title>
+      <link>http://example.org/docs/example/table-of-contents/with-toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/example/table-of-contents/with-toc/</guid>
+      <description>Linux 进程调度 前言 在计算机科学中，调度就是一种将任务（Work）分配给资源的方法。任务可能是虚拟的计算任务，例如线程、进程或者数据流，这些任务会被调度到硬件资源上执行，例如：处理器 CPU 等设备。调度器或调度算法的设计与实现最终都会归结到一个问题上，即如何对有限的资源进行分配以实现资源利用率的最大化并满足特定的需求。
 调度器是操作系统中的重要组件，操作系统中有进程调度器（Process Scheduler）、网络调度器（Network Scheduler）和 I/O 调度器（I/O Scheduler）等组件，本文介绍的是进程调度器。
 进程调度器负责给系统中的所有进程分配有限的 CPU 时间资源。只有通过合理的调度算法，系统资源才能最大限度地发挥作用，多进程才会有并发执行的效果。
 进程调度算法总是追求达到以下目标：
-公平：保证每个进程得到合理的 CPU 时间，避免进程的饥饿现象。 高效：尽量充分使用 CPU，使 CPU 保持忙碌状态。 快速的响应时间：使交互用户的响应时间应尽可能短。 周转时间：使批处理用户等待输出的时间尽可能短。 吞吐量：单位时间内处理的进程数量尽可能多。 但是很显然，这几个目标是相互冲突的，不可能同时达到。因此只能在这几个方面进行取舍，从而确定自己的调度算法。
+ 公平：保证每个进程得到合理的 CPU 时间，避免进程的饥饿现象。 高效：尽量充分使用 CPU，使 CPU 保持忙碌状态。 快速的响应时间：使交互用户的响应时间应尽可能短。 周转时间：使批处理用户等待输出的时间尽可能短。 吞吐量：单位时间内处理的进程数量尽可能多。  但是很显然，这几个目标是相互冲突的，不可能同时达到。因此只能在这几个方面进行取舍，从而确定自己的调度算法。
 进程调度器将进程分为三类：
-交互式进程(Interactive process)：这些进程经常与用户进行交互，因此进程不断地处于睡眠状态，等待用户输入。典型的应用比如命令行 shell、文本编辑程序。此类进程对系统响应时间要求比较高，否则用户会感觉系统反应迟缓。
-批处理进程(Batch process)：这些进程一般在后台运行，不必与用户交互，需要占用大量的系统资源。但是能够忍受响应延迟。典型的批处理程序如编译程序、数据库搜索引擎等。
-实时进程(Real-time process)：这些进程对调度延迟的要求最高，往往执行非常重要的操作，要求立即响应并执行。典型的实时程序比如视频播放软件、或飞机飞行控制系统，很明显这类程序不能容忍长时间的调度延迟。
-根据进程的不同分类 Linux 采用不同的调度策略。
+  交互式进程(Interactive process)：这些进程经常与用户进行交互，因此进程不断地处于睡眠状态，等待用户输入。典型的应用比如命令行 shell、文本编辑程序。此类进程对系统响应时间要求比较高，否则用户会感觉系统反应迟缓。
+  批处理进程(Batch process)：这些进程一般在后台运行，不必与用户交互，需要占用大量的系统资源。但是能够忍受响应延迟。典型的批处理程序如编译程序、数据库搜索引擎等。
+  实时进程(Real-time process)：这些进程对调度延迟的要求最高，往往执行非常重要的操作，要求立即响应并执行。典型的实时程序比如视频播放软件、或飞机飞行控制系统，很明显这类程序不能容忍长时间的调度延迟。
+  根据进程的不同分类 Linux 采用不同的调度策略。
 对于实时进程，采用 FIFO 或者 Round Robin 的调度策略。
 对于普通进程，则需要区分交互式和批处理式的不同。传统 Linux 调度器提高交互式应用的优先级，使得它们能更快地被调度。而 CFS 和 RSDL 等新的调度器的核心思想是“完全公平”。这个设计理念不仅大大简化了调度器的代码复杂度，还对各种调度需求的提供了更完美的支持。
 以下列出了 Linux 不同版本调度器的历史：
-初始调度器 · v0.01 ~ v2.4 由几十行代码实现，功能非常简陋； 同时最多处理 64 个任务； O(n) 调度器 · v2.</description></item><item><title>Without ToC</title><link>https://example.com/docs/example/table-of-contents/without-toc/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/example/table-of-contents/without-toc/</guid><description>At me ipso nepotibus nunc celebratior genus Tanto oblite Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
-Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description></item><item><title>Creating a New Theme</title><link>https://example.com/posts/creating-a-new-theme/</link><pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate><guid>https://example.com/posts/creating-a-new-theme/</guid><description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description></item><item><title>Migrate to Hugo from Jekyll</title><link>https://example.com/posts/migrate-from-jekyll/</link><pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate><guid>https://example.com/posts/migrate-from-jekyll/</guid><description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description></item><item><title>(Hu)go Template Primer</title><link>https://example.com/posts/goisforlovers/</link><pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate><guid>https://example.com/posts/goisforlovers/</guid><description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description></item><item><title>Getting Started with Hugo</title><link>https://example.com/posts/hugoisforlovers/</link><pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate><guid>https://example.com/posts/hugoisforlovers/</guid><description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
+ 初始调度器 · v0.01 ~ v2.4  由几十行代码实现，功能非常简陋； 同时最多处理 64 个任务；   O(n) 调度器 · v2.</description>
+    </item>
+    
+    <item>
+      <title>Without ToC</title>
+      <link>http://example.org/docs/example/table-of-contents/without-toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/example/table-of-contents/without-toc/</guid>
+      <description>At me ipso nepotibus nunc celebratior genus Tanto oblite Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
+Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
+    </item>
+    
+    <item>
+      <title>Creating a New Theme</title>
+      <link>http://example.org/posts/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/creating-a-new-theme/</guid>
+      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
+We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>http://example.org/posts/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/migrate-from-jekyll/</guid>
+      <description>Move static content to static Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
+▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
+▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+    </item>
+    
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>http://example.org/posts/goisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goisforlovers/</guid>
+      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
+This document is a brief primer on using Go templates.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>http://example.org/posts/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/hugoisforlovers/</guid>
+      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
 Save it somewhere specific as we will be using it in the next step.
 More complete instructions are available at Install Hugo
 Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
 Follow the following steps:
-Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313 Corresponding pseudo commands:</description></item><item><title/><link>https://example.com/docs/example/collapsed/3rd-level/4th-level/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/example/collapsed/3rd-level/4th-level/</guid><description>4th Level of Menu Caesorum illa tu sentit micat vestes papyriferi Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.
-Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto! Sedes ante dum superest extrema.</description></item><item><title/><link>https://example.com/docs/example/hidden/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/example/hidden/</guid><description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
-Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor Cum honorum Latona O fallor in sustinui iussorum equidem.</description></item><item><title/><link>https://example.com/docs/shortcodes/columns/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/columns/</guid><description>Columns Columns help organize shorter pieces of content horizontally for readability.
-{{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example Left Content Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description></item><item><title/><link>https://example.com/docs/shortcodes/details/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/details/</guid><description>Details Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.
-Example {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} Title Markdown content Lorem markdownum insigne&amp;hellip;</description></item><item><title/><link>https://example.com/docs/shortcodes/expand/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/expand/</guid><description>Expand Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example Default {{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Expand ↕ Markdown content Lorem markdownum insigne&amp;hellip; With Custom Label {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Custom Label .</description></item><item><title/><link>https://example.com/docs/shortcodes/hints/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/hints/</guid><description>Hints Hint shortcode can be used as hint/alerts/notification block.
-There are 3 colors to choose: info, warning and danger.
-{{&amp;lt; hint [info|warning|danger] &amp;gt;}} **Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}} Example Markdown content
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa Markdown content</description></item><item><title/><link>https://example.com/docs/shortcodes/how-I-built-this-blog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/how-I-built-this-blog/</guid><description>How I built this blog This blog was built with Hugo, which is one of the most popular open-source static site generators.
-Something used in this blog are：
-Hugo Hugo-book Github Page Github Action Hugo Here&amp;rsquo;s the homepage of Hugo.
-Theme Here&amp;rsquo;s the homepage of hugo-book. Just be simple and clean. I lvoe it.
-Branch The repository is： heming6666/heming6666.github.io:
-source: Where to store the source code master: Where to store the static files for Github Page to render.</description></item><item><title/><link>https://example.com/docs/shortcodes/katex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/katex/</guid><description>KaTeX KaTeX shortcode let you render math typesetting in markdown document. See KaTeX
-Example {{&amp;lt; katex [display] [class=&amp;#34;text-center&amp;#34;] &amp;gt;}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{&amp;lt; /katex &amp;gt;}} \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\] Display Mode Example Here is some inline example: \(\pi(x)\) , rendered in the same line. And below is display example, having display: block \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\] Text continues here.</description></item><item><title/><link>https://example.com/docs/shortcodes/mermaid/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/mermaid/</guid><description>Mermaid Chart Mermaid is library for generating svg charts and diagrams from text.
-Example {{&amp;lt; mermaid [class=&amp;#34;text-center&amp;#34;]&amp;gt;}} sequenceDiagram Alice-&amp;gt;&amp;gt;Bob: Hello Bob, how are you? alt is sick Bob-&amp;gt;&amp;gt;Alice: Not so good :( else is well Bob-&amp;gt;&amp;gt;Alice: Feeling fresh like a daisy end opt Extra response Bob-&amp;gt;&amp;gt;Alice: Thanks for asking end {{&amp;lt; /mermaid &amp;gt;}} mermaid.initialize({ flowchart: { useMaxWidth:true } }); sequenceDiagram Alice-Bob: Hello Bob, how are you?</description></item><item><title/><link>https://example.com/docs/shortcodes/tabs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://example.com/docs/shortcodes/tabs/</guid><description>Tabs Tabs let you organize content by context, for example installation instructions for each supported platform.
-{{&amp;lt; tabs &amp;#34;uniqueid&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;MacOS&amp;#34; &amp;gt;}} # MacOS Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Linux&amp;#34; &amp;gt;}} # Linux Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Windows&amp;#34; &amp;gt;}} # Windows Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} Example MacOS MacOS This is tab MacOS content.
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description></item></channel></rss>
+ Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/example/collapsed/3rd-level/4th-level/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/example/collapsed/3rd-level/4th-level/</guid>
+      <description>4th Level of Menu Caesorum illa tu sentit micat vestes papyriferi Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.
+Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto! Sedes ante dum superest extrema.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/docs/example/hidden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/docs/example/hidden/</guid>
+      <description>This page is hidden in menu Quondam non pater est dignior ille Eurotas Latent te facies Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
+ Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona O fallor in sustinui iussorum equidem.</description>
+    </item>
+    
+  </channel>
+</rss>
