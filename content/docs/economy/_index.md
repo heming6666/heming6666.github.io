@@ -1,4 +1,5 @@
 ---
+weight: 2
 bookFlatSection: true
-bookHidden: true
+title: "经济学"
 ---
