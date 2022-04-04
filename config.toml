@@ -1,0 +1,4 @@
+baseURL = 'https://heming6666.github.io/'
+languageCode = 'en-us'
+title = '林氏伉俪写字的地方'
+theme = "hugo-book"
