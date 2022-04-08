@@ -1,6 +1,6 @@
 ---
 title: Linux 进程调度
-weight: 1
+weight: 2
 ---
 <!-- TOC -->
 # Linux 进程调度
