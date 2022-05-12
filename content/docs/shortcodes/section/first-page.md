@@ -1,9 +1,6 @@
 # First page
 
-* 近十年To B的国内外公司采用开源Core+SaaS，开源好处：最高效的开发模式；获客，得到更多的用户，测试和反馈，最重要的客户需求，用户的用法，会超出想象；基础设施必须开源。
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 
 <!--more-->
-* 开源文档很重要，发展开源社区，把Credit给别人。
-* 得到高手帮助，提高自己能力，不要想得太难。代码开源，有生命力，更长的生命周期；把东西做好，回报自然来，平常心享受过程，很好的经历，未来还有商业机会。
-
-
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
