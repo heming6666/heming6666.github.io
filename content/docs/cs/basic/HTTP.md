@@ -58,7 +58,7 @@ title: HTTP/HTTPS
 3. 端口：80 VS 443
 
 ### 2、HTTPS的加密流程
-![HTTPS的加密流程](/basic-http.png)
+![HTTPS的加密流程](/images/basic-http.png)
 ### 3、HTTP 1.0、HTTP 1.1及HTTP 2.0的主要区别是什么
 1. 1.0 默认是短连接。
 2. 1.1 默认长连接，TCP默认不关闭，复用TCP连接
