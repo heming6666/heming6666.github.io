@@ -5,7 +5,7 @@ weight: 1
 <!-- TOC -->
 # Linux 从开机到加电执行 main 函数之前的过程
 
-{{< mermaid [class="text-center"]>}}
+{{< mermaid >}}
 flowchart LR
     bootsect[执行 bootsect]--> setup[执行 setup]--> head[执行 head.s]--> main[main 函数]
 {{< /mermaid >}}
@@ -45,4 +45,3 @@ BIOS 负责找到并加载第一扇区，与具体的Linux内核无关，即两�
     - IDT(中断描述符表) + IDTR
 3. 打开`A20`，实现32位寻址
 4. 对 中断控制芯片`8259A` 重新编程
-
