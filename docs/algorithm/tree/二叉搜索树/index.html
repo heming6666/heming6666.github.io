@@ -1,9 +1,7 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="二叉搜索树 #  230. 二叉搜索树中第K小的元素
-直观的：
- 二叉搜索树，所以中序遍历就是升序的； 所以中序遍历，记录当前遍历到第几个，和 k 比较。   Expand ↕  class Solution { public:  int kthSmallest(TreeNode* root, int k) {  traverse(root, k);  return res;  } private:  int res = 0;  int rank = 0;  void traverse(TreeNode *root, int k) {  if (root == nullptr) return;  traverse(root->left, k);  rank++;  if (k == rank) {  res = root->val;  return;  }  traverse(root->right, k);  } };     优化："><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="二叉搜索树"><meta property="og:description" content="二叉搜索树 #  230. 二叉搜索树中第K小的元素
-直观的：
- 二叉搜索树，所以中序遍历就是升序的； 所以中序遍历，记录当前遍历到第几个，和 k 比较。   Expand ↕  class Solution { public:  int kthSmallest(TreeNode* root, int k) {  traverse(root, k);  return res;  } private:  int res = 0;  int rank = 0;  void traverse(TreeNode *root, int k) {  if (root == nullptr) return;  traverse(root->left, k);  rank++;  if (k == rank) {  res = root->val;  return;  }  traverse(root->right, k);  } };     优化："><meta property="og:type" content="article"><meta property="og:url" content="https://heming6666.github.io/docs/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"><meta property="article:section" content="docs"><title>二叉搜索树 | 8898 写字的地方</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.e84172e57d5fe7019510a9930294916263932766c9d569845bb5be0eb2068e64.js integrity="sha256-6EFy5X1f5wGVEKmTApSRYmOTJ2bJ1WmEW7W+DrIGjmQ=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="二叉搜索树 #  一、基本操作 #  1、合法性 #  98. 验证二叉搜索树
+ 当前节点的值必须大于左子树所有的值（即左子树的最大值） 借助辅助函数，传递信息/约束   Expand ↕  class Solution { public:  bool isValidBST(TreeNode* root) {  return isValidBST(root, nullptr, nullptr);  }   bool isValidBST(TreeNode* root, TreeNode* leftMax, TreeNode* rightMin) {  if (root == nullptr) return true;  // 当前节点的值必须大于左子树所有的值（即左子树的最大值）  if (leftMax != nullptr && root->val <= leftMax->val) return false;  // 必须小于右子树所有的值（即右子树的最小值）  if (rightMin !"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content="二叉搜索树"><meta property="og:description" content="二叉搜索树 #  一、基本操作 #  1、合法性 #  98. 验证二叉搜索树
+ 当前节点的值必须大于左子树所有的值（即左子树的最大值） 借助辅助函数，传递信息/约束   Expand ↕  class Solution { public:  bool isValidBST(TreeNode* root) {  return isValidBST(root, nullptr, nullptr);  }   bool isValidBST(TreeNode* root, TreeNode* leftMax, TreeNode* rightMin) {  if (root == nullptr) return true;  // 当前节点的值必须大于左子树所有的值（即左子树的最大值）  if (leftMax != nullptr && root->val <= leftMax->val) return false;  // 必须小于右子树所有的值（即右子树的最小值）  if (rightMin !"><meta property="og:type" content="article"><meta property="og:url" content="https://heming6666.github.io/docs/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"><meta property="article:section" content="docs"><title>二叉搜索树 | 8898 写字的地方</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css integrity="sha256-gsXb0jRHzuC0wqo+0Izglh+qQOH6Nw7uT4yfAuDUa18=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.221aa663634ed4fbf4435cf123a4eadae7c3410b2d045371236eca4cfbb85342.js integrity="sha256-IhqmY2NO1Pv0Q1zxI6Tq2ufDQQstBFNxI27KTPu4U0I=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>8898 写字的地方</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>法类</span><ul><li><span>系统</span><ul><li><a href=/docs/law/system/%E4%BD%95%E4%B8%BA%E5%80%BA/>何为债</a></li><li><a href=/docs/law/system/%E5%95%86%E5%85%A5%E5%85%AC%E5%8F%B8%E6%B3%95/>商入公司法</a></li><li><a href=/docs/law/system/%E5%9B%BD%E9%99%85%E6%8A%95%E8%B5%84%E4%BB%B2%E8%A3%81%E7%9A%84%E5%8F%91%E5%B1%95%E4%B8%8E%E6%94%B9%E9%9D%A9/>国际投资仲裁的发展与改革</a></li><li><a href=/docs/law/system/%E4%BB%A5%E5%85%AC%E5%8F%B8%E6%8B%85%E4%BF%9D%E4%B8%BA%E4%BE%8B/>以公司担保为例</a></li></ul></li><li><span>实务</span><ul><li><a href=/docs/law/practice/%E8%B7%A8%E5%A2%83%E5%B9%B6%E8%B4%AD%E4%BA%A4%E6%98%93%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1%E5%AE%9E%E6%93%8D%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90/>跨境并购交易方案设计实操案例解析</a></li></ul></li></ul></li><li><input type=checkbox id=section-df0032c292233614eb120498739e8356 class=toggle>
 <label for=section-df0032c292233614eb120498739e8356 class="flex justify-between"><a role=button>非法类</a></label><ul><li><a href=/docs/other/%E4%B8%AD%E5%9B%BD%E6%94%BF%E5%BA%9C%E4%B8%8E%E7%BB%8F%E6%B5%8E%E5%8F%91%E5%B1%95%E5%85%B0%E5%B0%8F%E6%AC%A2/>《中国政府与经济发展》</a></li><li><a href=/docs/other/%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2%E8%92%8B%E5%BB%B7%E9%BB%BB/>《中国近代史》</a></li><li><a href=/docs/other/%E8%A7%A3%E8%AF%BB%E4%B8%AD%E5%9B%BD%E7%BB%8F%E6%B5%8E%E6%9E%97%E6%AF%85%E5%A4%AB/>《解读中国经济》</a></li><li><a href=/docs/other/%E9%87%8D%E8%AF%BB%E9%A9%AC%E5%85%8B%E6%80%9D%E9%9F%A9%E6%AF%93%E6%B5%B7/>《重读马克思》</a></li></ul></li><li class=book-section-flat><span>计算机</span><ul><li><input type=checkbox id=section-1ff518ef89fb33a66175c6f5ee4603d4 class=toggle>
 <label for=section-1ff518ef89fb33a66175c6f5ee4603d4 class="flex justify-between"><a role=button>Linux 内核设计的艺术</a></label><ul><li><a href=/docs/cs/linux-kernel/%E4%BB%8E%E5%BC%80%E6%9C%BA%E5%88%B0main%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C/>从开机 main 函数执行</a></li></ul></li><li><a href=/docs/cs/linux-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/>Linux 进程调度</a></li><li><a href=/docs/cs/the-clean-coder/>The Clean Coder</a></li><li><input type=checkbox id=section-502ed6acb8574537a63e2babb4b7f460 class=toggle>
@@ -13,44 +11,92 @@
 <label for=section-73294e4445b3669a47dedbccf2c73bc4 class="flex justify-between"><a href=/docs/algorithm/tree/>二叉树</a></label><ul><li><a href=/docs/algorithm/tree/1/>二叉树 - 子树分解题</a></li><li><a href=/docs/algorithm/tree/3/>二叉树 - 构造题</a></li><li><a href=/docs/algorithm/tree/2/>二叉树 - 遍历题</a></li><li><a href=/docs/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/ class=active>二叉搜索树</a></li></ul></li><li><input type=checkbox id=section-148636b2d70f343fb870f163a5972625 class=toggle>
 <label for=section-148636b2d70f343fb870f163a5972625 class="flex justify-between"><a role=button>搜索查找算法</a></label><ul><li><a href=/docs/algorithm/search/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/>二分查找</a></li><li><a href=/docs/algorithm/search/bfs/>BFS广度优先搜索</a></li></ul></li><li><a href=/docs/algorithm/lru/>Lru</a></li><li><a href=/docs/algorithm/%E4%BD%8D%E8%BF%90%E7%AE%97%E6%8A%80%E5%B7%A7/>位运算技巧</a></li><li><a href=/docs/algorithm/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/>动态规划</a></li><li><a href=/docs/algorithm/%E5%8F%8C%E6%8C%87%E9%92%88/>双指针</a></li><li><a href=/docs/algorithm/%E6%8E%92%E5%BA%8F/>排序</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>二叉搜索树</strong>
-<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents></nav></aside></header><article class=markdown><h1 id=二叉搜索树>二叉搜索树
-<a class=anchor href=#%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91>#</a></h1><p><a href=https://leetcode.cn/problems/kth-smallest-element-in-a-bst/>230. 二叉搜索树中第K小的元素</a></p><p>直观的：</p><ol><li>二叉搜索树，所以中序遍历就是升序的；</li><li>所以中序遍历，记录当前遍历到第几个，和 <code>k</code> 比较。</li></ol><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#一基本操作>一、基本操作</a><ul><li><a href=#1合法性>1、合法性</a></li><li><a href=#2遍历搜索>2、遍历搜索</a></li><li><a href=#增>增</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=二叉搜索树>二叉搜索树
+<a class=anchor href=#%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91>#</a></h1><h2 id=一基本操作>一、基本操作
+<a class=anchor href=#%e4%b8%80%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c>#</a></h2><h3 id=1合法性>1、合法性
+<a class=anchor href=#1%e5%90%88%e6%b3%95%e6%80%a7>#</a></h3><p><a href=https://leetcode.cn/problems/validate-binary-search-tree/>98. 验证二叉搜索树</a></p><ul><li>当前节点的值必须大于左子树所有的值（即左子树的最大值）</li><li>借助辅助函数，传递信息/约束</li></ul><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
 <span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C++ data-lang=C++><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> {
 </span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> kthSmallest(TreeNode<span style=color:#f92672>*</span> root, <span style=color:#66d9ef>int</span> k) {
-</span></span><span style=display:flex><span>        traverse(root, k);
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> res;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> isValidBST(TreeNode<span style=color:#f92672>*</span> root) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>isValidBST</span>(root, <span style=color:#66d9ef>nullptr</span>, <span style=color:#66d9ef>nullptr</span>);
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span><span style=color:#66d9ef>private</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> res <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> rank <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>traverse</span>(TreeNode <span style=color:#f92672>*</span>root, <span style=color:#66d9ef>int</span> k) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (root <span style=color:#f92672>==</span> <span style=color:#66d9ef>nullptr</span>) <span style=color:#66d9ef>return</span>;
-</span></span><span style=display:flex><span>        traverse(root<span style=color:#f92672>-&gt;</span>left, k);
-</span></span><span style=display:flex><span>        rank<span style=color:#f92672>++</span>;
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (k <span style=color:#f92672>==</span> rank) {
-</span></span><span style=display:flex><span>            res <span style=color:#f92672>=</span> root<span style=color:#f92672>-&gt;</span>val;
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span>;
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>        traverse(root<span style=color:#f92672>-&gt;</span>right, k);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>bool</span> <span style=color:#a6e22e>isValidBST</span>(TreeNode<span style=color:#f92672>*</span> root, TreeNode<span style=color:#f92672>*</span> leftMax, TreeNode<span style=color:#f92672>*</span> rightMin) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (root <span style=color:#f92672>==</span> <span style=color:#66d9ef>nullptr</span>) <span style=color:#66d9ef>return</span> true;
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 当前节点的值必须大于左子树所有的值（即左子树的最大值）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (leftMax <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nullptr</span> <span style=color:#f92672>&amp;&amp;</span> root<span style=color:#f92672>-&gt;</span>val <span style=color:#f92672>&lt;=</span> leftMax<span style=color:#f92672>-&gt;</span>val) <span style=color:#66d9ef>return</span> false;
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 必须小于右子树所有的值（即右子树的最小值）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (rightMin <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nullptr</span> <span style=color:#f92672>&amp;&amp;</span> root<span style=color:#f92672>-&gt;</span>val <span style=color:#f92672>&gt;=</span> rightMin<span style=color:#f92672>-&gt;</span>val) <span style=color:#66d9ef>return</span> false; 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// 对左子树递归时，左子树的左子树沿用，右子树就是当前节点
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> isValidBST(root<span style=color:#f92672>-&gt;</span>left, leftMax, root) <span style=color:#f92672>&amp;&amp;</span> isValidBST(root<span style=color:#f92672>-&gt;</span>right, root, rightMin);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div></div></label></div><p>优化：</p><ol><li>这样的话，每调用一次就要遍历一次，复杂度<code>O(N)</code>；</li><li>想办法降到<code>O(logN)</code>，二分的方法：如果当前节点排名 <code>m</code>, 和 <code>k</code> 去比较，不相等的就在左/右子树；</li><li>因此每个节点需要维护额外的信息：以自己为根的树有多少个节点。</li></ol><p><a href=https://leetcode.cn/problems/convert-bst-to-greater-tree/>538. 把二叉搜索树转换为累加树</a></p><ol><li>倒着累加就行；</li><li>降序遍历时，先右子树，再左子树就可以。</li></ol><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+</span></span></code></pre></div></div></label></div><h3 id=2遍历搜索>2、遍历搜索
+<a class=anchor href=#2%e9%81%8d%e5%8e%86%e6%90%9c%e7%b4%a2>#</a></h3><ul><li><p><a href=https://leetcode.cn/problems/search-in-a-binary-search-tree/>二叉搜索树中的搜索</a></p><ul><li>类似二分搜索</li></ul><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code>```C++
+class Solution {
+public:
+    TreeNode* searchBST(TreeNode* root, int val) {
+        if (root == nullptr) return nullptr;
+        if (root-&gt;val &gt; val) return searchBST(root-&gt;left, val);
+        if (root-&gt;val &lt; val) return searchBST(root-&gt;right, val);
+        return root;
+    }
+};
+```
+</code></pre></div></label></div></li><li><p><a href=https://leetcode.cn/problems/kth-smallest-element-in-a-bst/>二叉搜索树中第K小的元素</a></p><p>直观的：</p><ol><li>中序遍历本身就是升序的；</li><li>所以中序遍历，记录当前遍历到第几个，和 <code>k</code> 比较。</li></ol><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code>```C++
+class Solution {
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        traverse(root, k);
+        return res;
+    }
+private:
+    int res = 0;
+    int rank = 0;
+    void traverse(TreeNode *root, int k) {
+        if (root == nullptr) return;
+        traverse(root-&gt;left, k);
+        rank++;
+        if (k == rank) {
+            res = root-&gt;val;
+            return;
+        }
+        traverse(root-&gt;right, k);
+    }
+};
+```
+</code></pre></div></label></div><p>优化：</p><ol><li>这样的话，每调用一次就要遍历一次，复杂度<code>O(N)</code>；</li><li>想办法降到<code>O(logN)</code>，二分的方法：如果当前节点排名 <code>m</code>, 和 <code>k</code> 去比较，不相等的就在左/右子树；</li><li>因此每个节点需要维护额外的信息：以自己为根的树有多少个节点。</li></ol></li><li><p><a href=https://leetcode.cn/problems/convert-bst-to-greater-tree/>把二叉搜索树转换为累加树</a></p><ol><li>倒着累加就行；</li><li>降序遍历时，先右子树，再左子树就可以。</li></ol><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
+<span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><pre><code>```C++
+class Solution {
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        traverse(root);
+        return root;
+    }
+    int sum = 0;
+    void traverse(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        traverse(root.right);
+        sum += root.val;
+        root.val = sum;
+        traverse(root.left);
+    }
+};
+```
+</code></pre></div></label></div></li></ul><h3 id=增>增
+<a class=anchor href=#%e5%a2%9e>#</a></h3><p><a href=https://leetcode.cn/problems/insert-into-a-binary-search-tree/>二叉搜索树中的插入操作</a></p><ul><li>细节要注意。</li></ul><div class=book-expand><label><div class="book-expand-head flex justify-between"><span>Expand</span>
 <span>↕</span></div><input type=checkbox class=hidden><div class="book-expand-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C++ data-lang=C++><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span> {
 </span></span><span style=display:flex><span><span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
-</span></span><span style=display:flex><span>    TreeNode<span style=color:#f92672>*</span> convertBST(TreeNode<span style=color:#f92672>*</span> root) {
-</span></span><span style=display:flex><span>        traverse(root);
+</span></span><span style=display:flex><span>    TreeNode<span style=color:#f92672>*</span> insertIntoBST(TreeNode<span style=color:#f92672>*</span> root, <span style=color:#66d9ef>int</span> val) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (root <span style=color:#f92672>==</span> <span style=color:#66d9ef>nullptr</span>) <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> TreeNode(val);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (val <span style=color:#f92672>&lt;</span> root<span style=color:#f92672>-&gt;</span>val) root<span style=color:#f92672>-&gt;</span>left <span style=color:#f92672>=</span> insertIntoBST(root<span style=color:#f92672>-&gt;</span>left, val);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (val <span style=color:#f92672>&gt;</span> root<span style=color:#f92672>-&gt;</span>val) root<span style=color:#f92672>-&gt;</span>right <span style=color:#f92672>=</span> insertIntoBST(root<span style=color:#f92672>-&gt;</span>right, val);
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> root;
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>int</span> sum <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-</span></span><span style=display:flex><span>    <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>traverse</span>(TreeNode root) {
-</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (root <span style=color:#f92672>==</span> null) {
-</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span>;
-</span></span><span style=display:flex><span>        }
-</span></span><span style=display:flex><span>        traverse(root.right);
-</span></span><span style=display:flex><span>        sum <span style=color:#f92672>+=</span> root.val;
-</span></span><span style=display:flex><span>        root.val <span style=color:#f92672>=</span> sum;
-</span></span><span style=display:flex><span>        traverse(root.left);
-</span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div></div></label></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents></nav></div></aside></main></body></html>
+</span></span></code></pre></div></div></label></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#一基本操作>一、基本操作</a><ul><li><a href=#1合法性>1、合法性</a></li><li><a href=#2遍历搜索>2、遍历搜索</a></li><li><a href=#增>增</a></li></ul></li></ul></nav></div></aside></main></body></html>
